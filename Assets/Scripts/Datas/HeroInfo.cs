@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class StatInfo
+public class HeroInfo
 {
     public Sprite profile;
 
@@ -28,4 +28,7 @@ public class StatInfo
         m_HP = MAX_HP;
         m_MP = MAX_MP;
     }
+
+    public int GetDamage(HeroInfo target, bool ignore = false) => Mathf.Clamp((ignore ? 0 : this.DEF) - target.ATK, -target.ATK, 0);
+    public int GetDamage(int atk, bool ignore = false) => Mathf.Clamp((ignore ? 0 : this.DEF) - atk, -atk, 0);
 }
