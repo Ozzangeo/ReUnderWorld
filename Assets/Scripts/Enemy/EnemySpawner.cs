@@ -19,14 +19,16 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(m_patterns.GetWaitTime(m_index));
+            GameObject pattern = Instantiate(m_patterns.GetPattern(m_index));
+            pattern.transform.position += transform.position;
 
-            GameObject pattern = Instantiate(m_patterns.GetPattern(m_index), transform.position, Quaternion.identity);
             EnemyGroup group = pattern.GetOrAddComponent<EnemyGroup>();
             group.angle = m_patterns.GetAngle(m_index);
 
             m_index++;
             if (m_index >= m_patterns.GetCount()) { m_index = 0; }
+
+            yield return new WaitForSeconds(m_patterns.GetWaitTime(m_index));
         }
     }
 }

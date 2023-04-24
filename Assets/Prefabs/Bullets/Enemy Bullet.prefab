@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startBulletData: {fileID: 11400000, guid: 8be8dafca5b7c994bb9fc4bced0ed5ea, type: 2}
+  m_direction: {x: 0, y: 0, z: 0}
   m_isPlayer: 0
   trueDamage: 0
   m_rigidbody2D: {fileID: 575701574491745727}
@@ -148,6 +149,6 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

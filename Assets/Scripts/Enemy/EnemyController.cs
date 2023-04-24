@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         {
             yield return new WaitForSeconds(m_patterns.GetWaitTime(m_index));
 
-            GameObject pattern = Instantiate(m_patterns.GetPattern(m_index), transform.position, Quaternion.identity);
+            GameObject pattern = Instantiate(m_patterns.GetPattern(m_index), transform.position, transform.rotation);
             BulletGroup group = pattern.GetOrAddComponent<BulletGroup>();
             group.angle = m_patterns.GetAngle(m_index);
             group.targetATK = m_nowStat.ATK;

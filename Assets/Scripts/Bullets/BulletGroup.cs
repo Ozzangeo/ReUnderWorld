@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BulletGroup : MonoBehaviour
 {
-    [SerializeField] Bullet[] m_bullets;
+    private Bullet[] m_bullets = new Bullet[0];
     [HideInInspector] public float angle = 0;
     [HideInInspector] public int targetATK = 0;
 

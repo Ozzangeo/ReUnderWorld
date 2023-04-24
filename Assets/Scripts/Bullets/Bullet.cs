@@ -32,7 +32,11 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        m_rigidbody2D.velocity = m_direction * m_info.speed;    }
+        m_rigidbody2D.velocity = m_direction * m_info.speed; 
+
+        if (transform.position.x <= -32.0f || transform.position.x >= 32.0f) { Destroy(gameObject); }
+        if (transform.position.y <= -18.0f || transform.position.y >= 18.0f) { Destroy(gameObject); }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

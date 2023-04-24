@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bullets: []
   angle: 0
+  targetATK: 0
 --- !u!1001 &6356652003164551001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,6 +228,10 @@ PrefabInstance:
     - target: {fileID: 575701574491745722, guid: 1473aa89a7a86274a8b64f534e35a95f, type: 3}
       propertyPath: m_Name
       value: Enemy Bullet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 575701574491745727, guid: 1473aa89a7a86274a8b64f534e35a95f, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1473aa89a7a86274a8b64f534e35a95f, type: 3}
