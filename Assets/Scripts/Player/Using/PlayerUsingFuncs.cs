@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerUsingFuncs : MonoBehaviour
 {
@@ -18,8 +17,8 @@ public class PlayerUsingFuncs : MonoBehaviour
     {
         Vector3 pos = m_player.transform.position;
 
-        pos.x = Mathf.Clamp(pos.x + (Input.GetAxisRaw("Horizontal") * m_player.Speed * 5.0f * Time.deltaTime), m_player.MinPos.x, m_player.MaxPos.x);
-        pos.y = Mathf.Clamp(pos.y + (Input.GetAxisRaw( "Vertical" ) * m_player.Speed * 5.0f * Time.deltaTime), m_player.MinPos.y, m_player.MaxPos.y);
+        pos.x = Mathf.Clamp(pos.x + (Input.GetAxisRaw("Horizontal") * m_player.Speed * 10.0f * Time.deltaTime), m_player.MinPos.x, m_player.MaxPos.x);
+        pos.y = Mathf.Clamp(pos.y + (Input.GetAxisRaw( "Vertical" ) * m_player.Speed * 10.0f * Time.deltaTime), m_player.MinPos.y, m_player.MaxPos.y);
 
         m_player.transform.position = pos;
     }

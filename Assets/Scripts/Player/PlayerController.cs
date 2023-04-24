@@ -28,9 +28,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector2 m_minPos = Vector2.zero;
     [SerializeField] Vector2 m_maxPos = Vector2.zero;
     [SerializeField] Vector2 m_offsetPos = Vector2.zero;
-    public Vector2 AbsGroundSize => m_minPos.Abs() + m_maxPos.Abs();
-    public Vector2 GroundOffset => m_offsetPos;
-
     public const float SLOW_SPD = 0.6f;
 
     [Space(10.0f)]

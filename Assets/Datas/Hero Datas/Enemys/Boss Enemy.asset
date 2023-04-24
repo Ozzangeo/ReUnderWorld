@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_info:
     profile: {fileID: 21300000, guid: 342b144ded291414581b542850b56197, type: 3}
-    ATK: 20
+    ATK: 10
     MAX_HP: 480
     MAX_MP: 0
     DEF: 3

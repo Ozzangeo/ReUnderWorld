@@ -15,7 +15,7 @@ public class PlayGroundSetting : MonoBehaviour
         //m_boxCollider. size  = m_player.AbsGroundSize;
         //m_boxCollider.offset = m_player.GroundOffset;
 
-        Screen.SetResolution(m_resolution.x, m_resolution.y, false);
+        //Screen.SetResolution(m_resolution.x, m_resolution.y, false);
     }
 
     void OnTriggerExit2D(Collider2D collision)

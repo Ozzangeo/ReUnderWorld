@@ -36,10 +36,13 @@ MonoBehaviour:
     waitTime: 20
   - pattern: {fileID: 6618539356817990918, guid: 7e4ec1d546ab6a44e812d157cc4a24a1, type: 3}
     angle: 0
-    waitTime: 20
+    waitTime: 10
   - pattern: {fileID: 497577803770691604, guid: 8fe5abce7fc17b64a877183259fd38c6, type: 3}
     angle: 0
-    waitTime: 20
+    waitTime: 10
   - pattern: {fileID: 3442417026349530026, guid: e01e316640b216545ab2ff972f011573, type: 3}
+    angle: 0
+    waitTime: 0
+  - pattern: {fileID: 8672864018276995732, guid: 9b9a77444e1d56a4c947da50565cda0d, type: 3}
     angle: 0
     waitTime: 100
