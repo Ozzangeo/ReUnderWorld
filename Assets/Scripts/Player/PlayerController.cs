@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance => instance;
-    private static PlayerController instance;
+    public static PlayerController Instance => m_instance;
+    private static PlayerController m_instance;
 
     [SerializeField] HeroData m_startHeroData;
     public HeroInfo NowStat => m_nowStat;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] SpriteRenderer m_sprite;
 
-    void Awake() { if (PlayerController.instance == null) { PlayerController.instance = this; } }
+    void Awake() { if (PlayerController.m_instance == null) { PlayerController.m_instance = this; } }
 
     void Start()
     {
@@ -49,6 +49,11 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y + (Input.GetAxisRaw( "Vertical" ) * speed), m_minPos.y, m_maxPos.y);
 
         transform.position = pos;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(CoroutineEffector.DisplayHpBar(transform, m_nowStat, 0.8f));
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -62,5 +67,5 @@ public class PlayerController : MonoBehaviour
         }    
     }
 
-    public void HitMotion() { StartCoroutine(CorutineEffects.HitEffect(m_sprite)); }
+    public void HitMotion() { StartCoroutine(CoroutineEffector.HitEffect(m_sprite)); }
 }

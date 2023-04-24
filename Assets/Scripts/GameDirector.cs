@@ -36,5 +36,6 @@ public class GameDirector : MonoBehaviour
     void GameEnd()
     {
         PlayerPrefs.SetInt(HIGH_SCORE, m_highScore);
+        Debug.Log("Game Over");
     }
 }

@@ -7,9 +7,12 @@ public class BulletGroup : MonoBehaviour
 {
     [SerializeField] Bullet[] m_bullets;
     [HideInInspector] public float angle = 0;
+    [HideInInspector] public int targetATK = 0;
 
     void Start() {
-        if (m_bullets.Length <= 0) { m_bullets = GetComponentsInChildren<Bullet>(); }
+        if (m_bullets.Length < transform.childCount) { m_bullets = GetComponentsInChildren<Bullet>(); }
+
+        Setting(targetATK);
     }
 
     void Update()
@@ -23,6 +26,8 @@ public class BulletGroup : MonoBehaviour
 
     public void Setting(float ATK)
     {
-        foreach (Bullet bullet in m_bullets) { bullet.trueDamage = Convert.ToInt32(bullet.Info.mulATK * ATK); }
+        foreach (Bullet bullet in m_bullets) {
+            bullet.trueDamage = Convert.ToInt32(bullet.Info.mulATK * ATK);
+        }
     }
 }

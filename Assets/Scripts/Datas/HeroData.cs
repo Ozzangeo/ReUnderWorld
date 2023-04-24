@@ -16,7 +16,10 @@ public class HeroData : ScriptableObject
             ATK = this.m_info.ATK,
             MAX_HP = this.m_info.MAX_HP,
             MAX_MP = this.m_info.MAX_MP,
-            DEF = this.m_info.DEF
+            DEF = this.m_info.DEF,
+
+            SPD = this.m_info.SPD,
+            DEX = this.m_info.DEX
         };
         info.Reset();
 

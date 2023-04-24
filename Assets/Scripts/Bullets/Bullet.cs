@@ -8,14 +8,17 @@ public class Bullet : MonoBehaviour
 
     public BulletInfo Info => m_info;
     private BulletInfo m_info;
-    
+
+    [Space(10.0f)]
+    [SerializeField] Vector3 m_direction;
+    [SerializeField] bool m_isPlayer = false;
     public int trueDamage = 0;
 
     [Space(10.0f)]
     [SerializeField] Rigidbody2D m_rigidbody2D;
     [SerializeField] SpriteRenderer m_spriteRenderer;
 
-    void Start()
+    void Awake()
     {
         m_info = m_startBulletData.GetBulletInfo();
 
@@ -23,22 +26,37 @@ public class Bullet : MonoBehaviour
         if (m_rigidbody2D == null) { m_rigidbody2D = GetComponent<Rigidbody2D>(); }
 
         m_spriteRenderer.sprite = m_info.profile;
+
+        m_direction = Quaternion.AngleAxis(transform.localEulerAngles.z, Vector3.forward) * Vector3.down;
     }
 
     void Update()
     {
-        m_rigidbody2D.velocity = Vector3.down * m_info.speed;
-    }
+        m_rigidbody2D.velocity = m_direction * m_info.speed;    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) 
+        if (collision.CompareTag("Player") && !m_isPlayer) 
         {
             PlayerController player = PlayerController.Instance;
             player.NowStat.HP += player.NowStat.GetDamage(trueDamage);
             player.HitMotion();
 
             Destroy(gameObject);
+        } else if(collision.CompareTag("Enemy") && m_isPlayer) {
+            EnemyController enemy = collision.GetComponent<EnemyController>();
+            enemy.NowStat.HP += enemy.NowStat.GetDamage(trueDamage);
         }
     }
+
+    private Vector3 AngleToDirection(float angle)
+    {
+        Vector3 direction = Vector3.one;
+
+        var quaternion = Quaternion.Euler(0, angle, 0);
+        Vector3 newDirection = quaternion * direction;
+
+        return newDirection;
+    }
+
 }
