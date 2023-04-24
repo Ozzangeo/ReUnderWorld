@@ -19,7 +19,14 @@ public class HeroData : ScriptableObject
             DEF = this.m_info.DEF,
 
             SPD = this.m_info.SPD,
-            DEX = this.m_info.DEX
+            DEX = this.m_info.DEX,
+
+            HPS = this.m_info.HPS,
+            MPS = this.m_info.MPS,
+
+            ReturnScore = this.m_info.ReturnScore,
+            ReturnPoint = this.m_info.ReturnPoint,
+            ReturnExp = this.m_info.ReturnExp,
         };
         info.Reset();
 

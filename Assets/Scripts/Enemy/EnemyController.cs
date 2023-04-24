@@ -21,8 +21,6 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"Start Speed : {m_startHeroData.GetStatInfo().SPD}");
-
         m_nowStat = m_startHeroData.GetStatInfo();
 
         if (m_patterns == null) { Destroy(gameObject); }
@@ -34,11 +32,25 @@ public class EnemyController : MonoBehaviour
         if (m_patterns.GetCount() > 0) { StartCoroutine(SpawnBullet()); }
 
         m_direction = Quaternion.AngleAxis(transform.localEulerAngles.z, Vector3.forward) * Vector3.down;
+
+        m_nowStat.ATK += m_nowStat.ATK * (PlayerController.Instance.Lv / 5);
+        m_nowStat.HP += m_nowStat.HP * (PlayerController.Instance.Lv / 4);
+        m_nowStat.DEF += m_nowStat.DEF * (PlayerController.Instance.Lv / 6);
+
+        m_nowStat.ReturnExp += m_nowStat.ReturnExp * (PlayerController.Instance.Lv / 30);
     }
 
     void Update()
     {
         m_rigidbody2D.velocity = m_direction * m_nowStat.SPD;
+        if (m_nowStat.HP <= 0)
+        {
+            GameDirector.Instance.AddScore(m_nowStat.ReturnScore);
+            PlayerController.Instance.NowStat.MP += m_nowStat.ReturnPoint;
+            PlayerController.Instance.Exp += m_nowStat.ReturnExp;
+
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -51,14 +63,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void HitMotion() { StartCoroutine(CoroutineEffector.DisplayHpBar(transform, m_nowStat)); }
+    public void HitMotion() { CoroutineEffector.Instance.DisplayHpBar(transform, m_nowStat); }
 
     IEnumerator SpawnBullet()
     {
         while(true)
         {
-            yield return new WaitForSeconds(m_patterns.GetWaitTime(m_index));
-
             GameObject pattern = Instantiate(m_patterns.GetPattern(m_index), transform.position, transform.rotation);
             BulletGroup group = pattern.GetOrAddComponent<BulletGroup>();
             group.angle = m_patterns.GetAngle(m_index);
@@ -66,6 +76,8 @@ public class EnemyController : MonoBehaviour
 
             m_index++;
             if (m_index >= m_patterns.GetCount()) { m_index = 0; }
+
+            yield return new WaitForSeconds(m_patterns.GetWaitTime(m_index));
         }
     }
 }

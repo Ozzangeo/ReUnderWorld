@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb7a2372395e454e86151a1ebaf8615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startBulletData: {fileID: 11400000, guid: 8be8dafca5b7c994bb9fc4bced0ed5ea, type: 2}
+  m_startBulletData: {fileID: 0}
   m_direction: {x: 0, y: 0, z: 0}
   m_isPlayer: 0
   trueDamage: 0

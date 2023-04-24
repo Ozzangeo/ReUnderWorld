@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6606f905f4b97a946a6d4ad621791417, type: 3}
+  m_Name: Pattern Data
+  m_EditorClassIdentifier: 
+  m_patterns:
+  - pattern: {fileID: 8541556591360647105, guid: bea55a823aa85294697ccd83af349fc6, type: 3}
+    angle: 0
+    waitTime: 15
+  - pattern: {fileID: 8672864018276995732, guid: 9b9a77444e1d56a4c947da50565cda0d, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 6618539356817990918, guid: 7e4ec1d546ab6a44e812d157cc4a24a1, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 497577803770691604, guid: 8fe5abce7fc17b64a877183259fd38c6, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 8672864018276995732, guid: 9b9a77444e1d56a4c947da50565cda0d, type: 3}
+    angle: 15
+    waitTime: 20
+  - pattern: {fileID: 497577803770691604, guid: 8fe5abce7fc17b64a877183259fd38c6, type: 3}
+    angle: 0
+    waitTime: 0
+  - pattern: {fileID: 8541556591360647105, guid: bea55a823aa85294697ccd83af349fc6, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 6618539356817990918, guid: 7e4ec1d546ab6a44e812d157cc4a24a1, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 497577803770691604, guid: 8fe5abce7fc17b64a877183259fd38c6, type: 3}
+    angle: 0
+    waitTime: 20
+  - pattern: {fileID: 3442417026349530026, guid: e01e316640b216545ab2ff972f011573, type: 3}
+    angle: 0
+    waitTime: 100

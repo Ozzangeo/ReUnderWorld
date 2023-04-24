@@ -24,7 +24,7 @@ public class BulletGroup : MonoBehaviour
         if(transform.childCount <= 0) { Destroy(gameObject); }
     }
 
-    public void Setting(float ATK)
+    private void Setting(float ATK)
     {
         foreach (Bullet bullet in m_bullets) {
             bullet.trueDamage = Convert.ToInt32(bullet.Info.mulATK * ATK);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CoroutineEffector : MonoBehaviour
 {
+    public static CoroutineEffector Instance => m_instance;
     private static CoroutineEffector m_instance;
 
     [SerializeField] GameObject m_hpSlider;
@@ -19,7 +20,12 @@ public class CoroutineEffector : MonoBehaviour
         if (HpSlider == null) { HpSlider = m_hpSlider; }    
     }
 
-    public static IEnumerator HitEffect(SpriteRenderer sprite)
+    // Hit Effect
+    public void HitEffect(SpriteRenderer sprite)
+    {
+        StartCoroutine(CoHitEffect(sprite));
+    }
+    private IEnumerator CoHitEffect(SpriteRenderer sprite)
     {
         float time = 0.0f;
         float waitTime = 1.0f / scale;
@@ -40,7 +46,13 @@ public class CoroutineEffector : MonoBehaviour
 
         sprite.color = Color.white;
     }
-    public static IEnumerator DisplayHpBar(Transform position, HeroInfo info, float distance = 1.0f)
+
+    // Display HP Bar
+    public void DisplayHpBar(Transform position, HeroInfo info, float distance = 1.0f)
+    {
+        StartCoroutine(CoDisplayHpBar(position, info, distance));
+    }
+    private IEnumerator CoDisplayHpBar(Transform position, HeroInfo info, float distance = 1.0f)
     {
         GameObject hp = Instantiate(HpSlider, m_instance.transform);
         Slider slider = hp.GetComponent<Slider>();
@@ -50,7 +62,9 @@ public class CoroutineEffector : MonoBehaviour
         float time = 0.0f;
         while (time < 1.0f)
         {
-            hp.transform.position = position.position + (Vector3.down * distance);
+            if(position == null) { break; }
+
+            hp.transform.position = (position ? position.position : Vector3.zero) + (Vector3.down * distance);
 
             yield return new WaitForFixedUpdate();
 

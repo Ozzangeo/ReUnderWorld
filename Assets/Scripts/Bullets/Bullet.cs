@@ -27,7 +27,9 @@ public class Bullet : MonoBehaviour
 
         m_spriteRenderer.sprite = m_info.profile;
 
-        m_direction = Quaternion.AngleAxis(transform.localEulerAngles.z, Vector3.forward) * Vector3.down;
+        m_direction = Quaternion.AngleAxis(transform.localEulerAngles.z, Vector3.forward) * (m_isPlayer ? Vector3.up : Vector3.down);
+
+        StartCoroutine(Life());
     }
 
     void Update()
@@ -50,6 +52,9 @@ public class Bullet : MonoBehaviour
         } else if(collision.CompareTag("Enemy") && m_isPlayer) {
             EnemyController enemy = collision.GetComponent<EnemyController>();
             enemy.NowStat.HP += enemy.NowStat.GetDamage(trueDamage);
+            enemy.HitMotion();
+
+            Destroy(gameObject);
         }
     }
 
@@ -63,4 +68,9 @@ public class Bullet : MonoBehaviour
         return newDirection;
     }
 
+    IEnumerator Life()
+    {
+        yield return new WaitForSeconds(15.0f);
+        Destroy(gameObject);
+    }
 }

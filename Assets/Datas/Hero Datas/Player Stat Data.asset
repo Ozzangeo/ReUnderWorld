@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_info:
     profile: {fileID: 0}
-    ATK: 1
-    MAX_HP: 20
-    MAX_MP: 10
+    ATK: 2
+    MAX_HP: 10
+    MAX_MP: 20
     DEF: 1
     SPD: 5
     DEX: 1
+    HPS: 0.1
+    MPS: 2.5
+    ReturnScore: 0
+    ReturnPoint: 0
+    ReturnExp: 0

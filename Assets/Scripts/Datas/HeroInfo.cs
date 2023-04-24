@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,37 @@ public class HeroInfo
     public int DEF = 0;
     public float SPD = 5.0f;
     public float DEX = 1.0f;
+
+    public float HPS = 0.0f;
+    public float MPS = 2.5f;
+
+    [Space(10.0f)]
+    public int ReturnScore = 0;
+    public int ReturnPoint = 0;
+    public int ReturnExp = 0;
+
+    public IEnumerator Update()
+    {
+        float mp = 0.0f;
+        float hp = 0.0f;
+
+        while(true)
+        {
+            mp += MPS * Time.deltaTime;
+            hp += HPS * Time.deltaTime;
+
+            yield return new WaitForFixedUpdate();
+
+            int t_mp = Convert.ToInt32(Mathf.Floor(mp));
+            int t_hp = Convert.ToInt32(Mathf.Floor(hp));
+
+            m_MP = Mathf.Clamp(m_MP + t_mp, 0, MAX_MP);
+            m_HP = Mathf.Clamp(m_HP + t_hp, 0, MAX_HP);
+
+            mp -= t_mp;
+            hp -= t_hp;
+        }
+    }
 
     public void Reset()
     {
